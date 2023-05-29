@@ -30,7 +30,7 @@ const Admin = () => {
           description:description,
           img:img
         }
-      fetch('http://localhost:5000/product',{
+      fetch('https://nextcommerce1backend.onrender.com/product',{
         method:"POST",
         headers:{
           "content-type":"application/json"
