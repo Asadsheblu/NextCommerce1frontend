@@ -1,12 +1,15 @@
+import { useSession } from 'next-auth/react';
+import { signIn,signOut } from 'next-auth/react';
 import Link from 'next/link';
-import React from 'react';
+import { useRouter } from 'next/router';
+import React, { useEffect, useState } from 'react';
 import { FaBeer, FaShoppingCart } from "react-icons/fa";
 const Nav = () => {
-    return (
+  return (
         <>
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <nav class="navbar navbar-expand-lg navbar-light bg-white">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Navbar</a>
+    <Link class="navbar-brand" href="/">FERI</Link>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -16,7 +19,26 @@ const Nav = () => {
           <Link class="nav-link active" aria-current="page" href="/">Home</Link>
         </li>
         <li class="nav-item">
-          <Link class="nav-link" href="/login/login">Login</Link>
+          <Link class="nav-link" href="/Reg/Login">Login</Link>
+          {/* {
+        session?<>
+
+
+
+
+        
+        <button onClick={signOut} className='btn btn-info me-2'>SignOut</button>
+     
+        
+        </>
+
+
+        
+       
+        :
+          <button className='btn btn-info me-2'><Link className='text-decoration-none text-white'href="/Reg/Login">SingIn</Link></button>
+      }
+         */}
         </li>
         <li class="nav-item">
           <Link class="nav-link" href="/admin/Admin">Admin</Link>
@@ -38,8 +60,8 @@ const Nav = () => {
         </li>
       </ul>
       <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-        <button class="btn btn-outline-success" type="submit">Search</button>
+        <input class="form-control me-2" type="search"  placeholder="Search" aria-label="Search"/>
+       
       </form>
       <button type='button' className='cart-icon' onClick="">
          <FaShoppingCart /> 

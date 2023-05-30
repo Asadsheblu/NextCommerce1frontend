@@ -1,15 +1,8 @@
 import { useRouter } from 'next/router';
-import React, { useEffect, useState } from 'react';
-import {useSession} from "next-auth/react"
-import { FaBeer, FaShoppingCart } from "react-icons/fa";
-const Details = () => {
-  //auth
-  // const {data:session}=useSession()
-  // 
-  // useEffect(()=>{
-  //   if(!session)router.push('/Reg/Login')
-  // },[session,router])
-  const router=useRouter()
+import React from 'react';
+
+const Checkout = () => {
+    const router=useRouter()
     const productId=router.query._id
     console.log(productId);
     const pay=(e)=>{
@@ -35,46 +28,9 @@ const Details = () => {
         console.log(result);
       })
     }
-    const [details,setDetails]=useState({})
-    useEffect(()=>{
-        fetch(`https://nextcommerce1backend.onrender.com/product/${productId}`)
-        .then(res=>res.json())
-        .then(data=>setDetails(data))
-    },[])
-    
     return (
         <div className='container'>
-     
-    <div className='row shadow rounded'>
-      <div className='col-md-7'>
-
-     
-
- 
-     
-      <div class="p-4 mx-auto mt-5 w-100">
-  <div class="row g-0">
-    <div class="col-md-5">
-      <img src={details.img}class="img-fluid rounded-start" alt="T-shirt"/>
-    
-    </div>
-    <div class="col-md-6 pt-3 ps-3">
-      <div class="card-body">
-        <h6 class="card-title"><span className='text-danger'>Product Name</span>: {details.name}</h6>
-        <h6 class="card-title"><span className='text-danger'>Product Category</span>: {details.category}</h6>
-        <h6 class="card-title"><span className='text-danger'>Product Price</span>: {details.price}<span className='fs-3'>৳</span></h6>
-        <p class="card-text"><span className='fw-bold text-danger'>Details</span>:{details.description}</p>
-       
-        
-      </div>
-    </div>
-  </div>
-</div>
-</div>
-<div className='col-md-5'>
-
-
-<form onSubmit={pay} className=' p-5'>
+          <form onSubmit={pay} className='mx-auto shadow p-5'>
   <div className="form-group">
     <label for="exampleFormControlInput1">Your Name</label>
     <input type="name" name='name' className="form-control w-75" id="exampleFormControlInput1"/>
@@ -101,13 +57,11 @@ const Details = () => {
   
   
   <div className="form-group">
- <button className='btn btn-danger fw-bold mt-3'>PAY</button>
+ <button className='btn btn-danger fw-bold'>PAY</button>
   </div>
-</form>
-</div>
-</div>  
+</form>  
         </div>
     );
 };
 
-export default Details;
+export default Checkout;

@@ -1,26 +1,56 @@
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { FaFire } from 'react-icons/fa';
 const Product = () => {
+    
     const[product,setProduct]=useState([])
+    const [filter,setFilter]=useState("")
     useEffect(()=>{
         fetch('https://nextcommerce1backend.onrender.com/product')
         .then(res=>res.json())
-        .then(data=>setProduct(data))
+        .then(data=>{
+            setProduct(data)
+           
+        })
     },[])
-  
+ 
    
     return (
-        <div>
+        <div className='container'>
+           
+              <div className='ms-auto w-25 pt-3'>
+                
+                <input class="form-control me-auto" type="text" 
+                onChange={(e)=>setFilter(e.target.value)}  
+                placeholder="Search" 
+                aria-label="Search"/>
+              
+             
+      </div>
            
                                <div className='container mt-5 mb-5 shadow p-2'>
+                              
+
+                               <h6>Trending Product <FaFire className='text-danger'/> </h6>
                                <div class="card-group">
             {
-                product.slice(0,6).map(products=>(
+                product.filter((value)=>{
+                    if(filter===""){
+                        return value
+                    }
+                    else if(value?.name.toLowerCase().includes(filter.toLowerCase())){
+                        return value
+                    }
+                })
+                
+                
+                
+                .slice(0,6).map(products=>(
                     
                 <>
                      
-                         <div class="card">
+                         <div class="card" key={products.id}>
     <img src={products?.img} class="card-img-top" alt="..."/>
     <div class="card-body">
       <h6 class="card-title">{products?.name}</h6>

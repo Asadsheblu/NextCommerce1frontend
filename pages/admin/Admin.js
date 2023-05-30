@@ -1,6 +1,12 @@
-import React from 'react';
-
+import React, { useEffect } from 'react';
+import {useSession} from "next-auth/react"
+import { useRouter } from 'next/router';
 const Admin = () => {
+  const {data:session}=useSession()
+  const router=useRouter()
+ useEffect(()=>{
+  if(!session) router.push('/Reg/Login')
+ },[router,session])
   const imageKey="e8ca8a640563b5725a2d73fc6920af02"
   const addProduct=(e)=>{
     e.preventDefault()
