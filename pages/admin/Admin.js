@@ -2,11 +2,11 @@ import React, { useEffect } from 'react';
 import {useSession} from "next-auth/react"
 import { useRouter } from 'next/router';
 const Admin = () => {
-  const {data:session}=useSession()
-  const router=useRouter()
- useEffect(()=>{
-  if(!session) router.push('/Reg/Login')
- },[router,session])
+//   const {data:session}=useSession()
+//   const router=useRouter()
+//  useEffect(()=>{
+//   if(!session) router.push('/Reg/Login')
+//  },[router,session])
   const imageKey="e8ca8a640563b5725a2d73fc6920af02"
   const addProduct=(e)=>{
     e.preventDefault()
@@ -14,9 +14,12 @@ const Admin = () => {
     const category=e.target.category.value
     const price=e.target.price.value
     const description=e.target.description.value
+    const title=e.target.title.value
+    const stock=e.target.stock.value
+   
     const image=e.target.image.files[0]
-    const data=[name,category,price,description,image]
-    console.log(data);
+    const data=[name,category,price,description,title,stock,image]
+
     const formData=new FormData()
     formData.append('image',image)
     const url=`https://api.imgbb.com/1/upload?key=${imageKey}`
@@ -36,7 +39,7 @@ const Admin = () => {
           description:description,
           img:img
         }
-      fetch('https://nextcommerce1backend.onrender.com/product',{
+      fetch('http://localhost:5000/product',{
         method:"POST",
         headers:{
           "content-type":"application/json"
@@ -48,7 +51,7 @@ const Admin = () => {
         if(data.insertedId){
           window.location.reload()
          
-          console.log(data);
+          
       }
       })
       }
@@ -64,27 +67,49 @@ const Admin = () => {
   </div>
   
   <div className="form-group">
-    <label for="exampleFormControlInput1">Product Category</label>
-    <input type="text" name='category' className="form-control w-75" id="exampleFormControlInput1"/>
+  <label for="exampleFormControlInput1">Product Category</label>
+      <select name="category" className="form-control w-75" >
+      <option value="">Select Category</option>
+      <option value="Other Snacks">Other Snacks</option>
+      <option value="Casual">Casual</option>
+      <option value="Panjabi"> Panjabi </option>
+      <option value="T-Shirts">T-Shirts</option>
+      <option value="Sarees">Sarees</option>
+      <option value="Toilet Paper">Toilet Paper</option>
+      <option value="Bath & Body Accessories">Bath & Body Accessories</option>
+      <option value="Mineral Water">Mineral Water</option>
+      <option value="Mobiles">Mobiles</option>
+      <option value="Herbs & Spices">Herbs & Spices</option>
+      <option value="Washing Powder">Washing Powder</option>
+      <option value="Fabric Upholstery">Fabric Upholstery</option>
+     
+    </select>
   </div>
+  <div className="form-group">
+    <label for="exampleFormControlInput1">Product Title</label>
+    <select name="title" className="form-control w-75">
+    <option value="Trending">Trending</option>
+    <option value="Popular">Popular</option>
+   
+  </select>
+  </div>
+  
+  
   
   <div className="form-group">
     <label for="exampleFormControlInput1">Product Price</label>
     <input type="number" name='price' className="form-control w-75" id="exampleFormControlInput1"/>
   </div>
+  <div className="form-group">
+    <label for="exampleFormControlInput1">Product Stock</label>
+    <input type="number" name='stock' className="form-control w-75" id="exampleFormControlInput1"/>
+  </div>
   
   <div className="form-group">
-    <label for="exampleFormControlInput1">Product Image1</label>
+    <label for="exampleFormControlInput1">Product Image</label>
     <input type='file' name='image' className="form-control w-75" id="exampleFormControlInput1"/>
   </div>
-  <div className="form-group">
-    <label for="exampleFormControlInput1">Product Image2</label>
-    <input type='file' name='image2' className="form-control w-75" id="exampleFormControlInput1"/>
-  </div>
-  <div className="form-group">
-    <label for="exampleFormControlInput1">Product Image3</label>
-    <input type='file' name='image3' className="form-control w-75" id="exampleFormControlInput1"/>
-  </div>
+ 
   
 
   <div className="form-group">

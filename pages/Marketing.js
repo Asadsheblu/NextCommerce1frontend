@@ -5,7 +5,9 @@ import Image from 'next/image';
 const Marketing = () => {
     return (
         <div className='container'>
-           <Image className='img-fluid' src={marketing2}/>
+        <div class="spinner-border" role="status">
+  <span class="sr-only">Loading...</span>
+</div>
         </div>
     );
 };

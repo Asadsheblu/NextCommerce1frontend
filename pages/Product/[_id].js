@@ -22,7 +22,7 @@ const Details = () => {
       const data={name,email,post,address,phone}
     
       data.productId=router.query._id
-      fetch('https://nextcommerce1backend.onrender.com/order',{
+      fetch('http://localhost:5000/order',{
         method:"POST",
         headers:{
           "content-type":"application/json"
@@ -37,7 +37,7 @@ const Details = () => {
     }
     const [details,setDetails]=useState({})
     useEffect(()=>{
-        fetch(`https://nextcommerce1backend.onrender.com/product/${productId}`)
+        fetch(`http://localhost:5000/product/${productId}`)
         .then(res=>res.json())
         .then(data=>setDetails(data))
     },[])

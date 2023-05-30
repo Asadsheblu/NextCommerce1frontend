@@ -2,48 +2,62 @@ import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FaFire } from 'react-icons/fa';
+import Marketing from '../Marketing';
 const Product = () => {
-    
+    const [serach,setSerach]=useState([])
     const[product,setProduct]=useState([])
-    const [filter,setFilter]=useState("")
+   
     useEffect(()=>{
-        fetch('https://nextcommerce1backend.onrender.com/product')
+        fetch('http://localhost:5000/product')
         .then(res=>res.json())
         .then(data=>{
             setProduct(data)
            
         })
     },[])
- 
-   
+//     const data=product
+//    let bonusVal = data[Math.floor(Math.random())];
+
+//    console.log(bonusVal);
     return (
         <div className='container'>
            
               <div className='ms-auto w-25 pt-3'>
                 
-                <input class="form-control me-auto" type="text" 
-                onChange={(e)=>setFilter(e.target.value)}  
-                placeholder="Search" 
-                aria-label="Search"/>
-              
+            
+              {/* <label for="exampleFormControlInput1">Product Title</label>
+    <select name="title" className="form-control w-75"  onChange={(e)=>{setSerach(e.target.value)}}>
+    <option value="">Category</option>
+    <option value="Other Snacks">Other Snacks</option>
+    <option value="Toilet Paper">Toilet Paper</option>
+    <option value="Bath & Body Accessories">Bath & Body Accessories</option>
+    <option value="Mineral Water">Mineral Water</option>
+    <option value="Mobiles">Mobiles</option>
+    <option value="Herbs & Spices">Herbs & Spices</option>
+    <option value="Washing Powder">Washing Powder</option>
+    <option value="Fabric Upholstery">Fabric Upholstery</option>
+   
+  </select>
+               */}
              
       </div>
            
-                               <div className='container mt-5 mb-5 shadow p-2'>
+                               <div className='container mt-5 mb-5 shadow bg-white p-2'>
                               
 
                                <h6>Trending Product <FaFire className='text-danger'/> </h6>
                                <div class="card-group">
             {
-                product.filter((value)=>{
-                    if(filter===""){
-                        return value
-                    }
-                    else if(value?.name.toLowerCase().includes(filter.toLowerCase())){
-                        return value
-                    }
-                })
-                
+                product
+                // .filter((data)=>{
+                //     if(serach==""){
+                //       return data
+                //     }
+                //     else if(data.category ? data.category.toLowerCase().includes(serach.toLowerCase()):""){
+                //       return data
+                //     }
+                //   })
+                //person.gender ? person.gender.toLowerCase() 
                 
                 
                 .slice(0,6).map(products=>(
@@ -65,10 +79,10 @@ const Product = () => {
                             </>))
             }
              </div>
-             {/* <div className='text-center'>
-             <button className='btn btn-info w-100'>  <Link class="nav-link" href="/Product/allproduct">Lode More Products</Link></button>
+             <div className='text-center'>
+             <Link class="nav-link" href="/Product/allproduct">Lode More Products</Link>
            
-             </div> */}
+             </div>
              
                     </div>
         </div>
