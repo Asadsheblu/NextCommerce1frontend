@@ -25,7 +25,7 @@ const Checkout = () => {
       .then(res=>res.json())
       .then(result=>{
         window.location.replace(result?.url)
-        console.log(result);
+        
       })
     }
     return (

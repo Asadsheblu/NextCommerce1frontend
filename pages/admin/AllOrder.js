@@ -10,7 +10,9 @@ const Allorder = () => {
     return (
         <div className='container'>
           
-                    
+                {
+                    orders.paymentStatus
+                }    
      
             {
                 orders.map(order=>{

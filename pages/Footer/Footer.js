@@ -1,7 +1,8 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
-import { FaFacebook, FaInstagram, FaLinkedin, FaYoutube } from 'react-icons/fa';
-
+import { FaFacebook, FaInstagram, FaLinkedin, FaStripeS, FaYoutube } from 'react-icons/fa';
+import logo from "../../public/payment.png"
 const Footer = () => {
     return (
         <div className='container-fluid bg-dark text-white mt-3'>
@@ -9,7 +10,7 @@ const Footer = () => {
                 <div className='row p-4'>
                     <div className='col-md-3'>
                         <h5>FERI</h5>
-                        <small>Largest product search engine, maximum categorized online shopping 
+                        <small>/Largest product search engine, maximum categorized online shopping 
                             mall and quickest home delivery system.</small>
                             <h6>Follow Us</h6>
                             <div className='d-flex'>
@@ -38,7 +39,8 @@ const Footer = () => {
                        </small>
                     </div>
                     <div className='col-md-3'>
-                        <h5 className='pt-5 fw-bold'>Get FERI App</h5>
+                        <h5 className='pt-5 fw-bold'>Our Payment Partner </h5>
+                        <Image src={logo} className='img-fluid'/>
                     </div>
 
 
