@@ -15,7 +15,7 @@ const Checkout = () => {
       const data={name,email,post,address,phone}
     
       data.productId=router.query._id
-      fetch('http://localhost:5000/order',{
+      fetch('https://nextcommerce1backend.onrender.com/order',{
         method:"POST",
         headers:{
           "content-type":"application/json"

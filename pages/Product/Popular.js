@@ -7,7 +7,7 @@ const Popular = () => {
   
     const [product,setProducts]=useState([])
     useEffect(()=>{
-        fetch('http://localhost:5000/product')
+        fetch('https://nextcommerce1backend.onrender.com/product')
         .then(res=>res.json())
         .then(data=>setProducts(data))
     },[])

@@ -9,7 +9,7 @@ const PaymentSuccess = () => {
     // console.log(trandId);
     const [details,setDetails]=useState({})
     useEffect(()=>{
-        fetch(`http://localhost:5000/order/${trandId}`)
+        fetch(`https://nextcommerce1backend.onrender.com/order/${trandId}`)
         .then(res=>res.json())
         .then(data=>console.log(data))
     },[])

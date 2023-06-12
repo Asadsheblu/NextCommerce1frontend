@@ -16,15 +16,15 @@ const Nav = () => {
       <span className="navbar-toggler-icon"></span>
     </button>
     <div className="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+      <ul className="navbar-nav mx-auto mb-2 mb-lg-0">
         <li className="nav-item">
           <Link className="nav-link active" aria-current="page" href="/">Home</Link>
         </li>
         <li className="nav-item">
-          <Link className="nav-link" href="/Reg/Login">Login</Link>
+          <Link className="nav-link active" href="/Product/allproduct">Product</Link>
           
         </li>
-        <li className="nav-item">
+        {/* <li className="nav-item">
           <Link className="nav-link" href="/admin/Admin">Admin</Link>
         </li>
         <li className="nav-item dropdown">
@@ -36,22 +36,14 @@ const Nav = () => {
             <li><Link className="dropdown-item" href="/admin/AllOrder">Order</Link></li>
 
            
-            <li><a className="dropdown-item" href="#">Something else here</a></li>
+            
           </ul>
-        </li>
-        <li className="nav-item">
-          <a className="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-        </li>
-      </ul>
-      <form className="d-flex">
-        <input className="form-control me-2" type="search"  placeholder="Search" aria-label="Search"/>
+        </li> */}
        
-      </form>
-      <button type='button' className='cart-icon' onClick="">
-         <FaShoppingCart /> 
-         <span className='cart-item-qty'>2</span>
+      </ul>
       
-       </button>
+     
+      
     </div>
   </div>
 </nav>

@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 const Allorder = () => {
     const [orders,setOrders]=useState([])
     useEffect(()=>{
-        fetch('http://localhost:5000/order')
+        fetch('https://nextcommerce1backend.onrender.com/order')
         .then(res=>res.json())
         .then(result=>setOrders(result))
     },[])
