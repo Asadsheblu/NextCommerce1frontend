@@ -24,10 +24,12 @@ const Details = () => {
       e.preventDefault()
       const name=e.target.name.value
       const email=e.target.email.value
+      const qty=e.target.qty.value
       const post=e.target.post.value
       const address=e.target.address.value
       const phone=e.target.number.value
-      const data={name,email,post,address,phone}
+      const data={name,qty,email,post,address,phone}
+      console.log(data);
     
       data.productId=router.query._id
       fetch('https://nextcommerce1backend.onrender.com/order',{
@@ -87,7 +89,10 @@ const Details = () => {
     <label for="exampleFormControlInput1">Your Name</label>
     <input type="name" name='name' className="form-control w-75" id="exampleFormControlInput1"/>
   </div>
-  
+  <div className="form-group">
+    <label for="exampleFormControlInput1">Quantity</label>
+    <input type="name" name='qty' className="form-control w-75" id="exampleFormControlInput1"/>
+  </div>
   <div className="form-group">
     <label for="exampleFormControlInput1">Your Email</label>
     <input type="email" name='email' className="form-control w-75" id="exampleFormControlInput1"/>

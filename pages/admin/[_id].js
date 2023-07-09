@@ -1,38 +1,45 @@
 // import { useRouter } from 'next/router';
 // import React, { useEffect, useState } from 'react';
-// import { FaCheckCircle, FaQuoteRight } from 'react-icons/fa';
 
-// const PaymentSuccess = () => {
+// const SingleOrder = () => {
 //     const router=useRouter()
 //     const orderId=router.query._id
-//     // console.log(orderId);
-//     // console.log(trandId);
+//     console.log(orderId);
 //     const [details,setDetails]=useState({})
 //     useEffect(()=>{
-//         fetch(`https://nextcommerce1backend.onrender.com/order/${trandId}`)
+//         fetch(`https://nextcommerce1backend.onrender.com/order/${orderId}`)
 //         .then(res=>res.json())
 //         .then(data=>setDetails(data))
-//     },[])
+//     },[setDetails])
 //     return (
 //         <div className='container'>
-//             <div className='container text-center shadow rounded bg-white w-50 p-4 mt-5'>
-//                     <FaCheckCircle className='text-success fs-3'/>
-//                     <h6 className='text-success pt-2 fw-bold'>Payment Successful</h6>
-//                     {
-
-//                     }
-//             </div>
+//             <div class="card-body">
+//         <h6 class="card-title"><span className='text-danger'>Product Name</span>: {details?.product?.name}</h6>
+//         <h6 class="card-title"><span className='text-danger'>Product Category</span>: {details?.product?.category}</h6>
+//         <h6 class="card-title"><span className='text-danger'>Product Price</span>: {details?.product?.price}<span className='fs-3'>৳</span></h6>
+//         <p class="card-text"><span className='fw-bold text-danger'>Details</span>:{details?.product?.description}</p>
+//         {/* <p class="card-text"><span className='fw-bold text-danger'>Payment</span>:
+       
+//        {details.paymentStatus? details.paymentStatus:"true"}
+//         </p> */}
+//         {
+            
+//         }
+       
+        
+//       </div>
 //         </div>
 //     );
 // };
 
-// export default PaymentSuccess;
+// export default SingleOrder;
+
 import { useRouter } from 'next/router';
 import React, { useEffect, useRef, useState } from 'react';
 import { useReactToPrint } from 'react-to-print';
 
 
-const PaymentSuccess = () => {
+const SingleOrder = () => {
     //routing
     const router=useRouter()
     const orderId=router.query._id
@@ -177,4 +184,4 @@ const PaymentSuccess = () => {
     );
 };
 
-export default PaymentSuccess;
+export default SingleOrder;
